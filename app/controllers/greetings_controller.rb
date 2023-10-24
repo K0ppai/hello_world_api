@@ -3,9 +3,8 @@ class GreetingsController < ApplicationController
 
   # GET /greetings
   def index
-    @greetings = Greeting.all
-
-    render json: @greetings
+    @random_greeting = Greeting.order('RANDOM()').first
+    render json: { greeting: @random_greeting.message }
   end
 
   # GET /greetings/1
